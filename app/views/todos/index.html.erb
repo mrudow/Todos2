@@ -1,0 +1,25 @@
+<h1>Todo List</h1>
+
+<div id="task-creation-form">
+  <%= form_for :todos, url: todos_path do |f| %>
+    <h2>New Item</h2>
+    <p class="new todo">
+      <%= f.label :content %><br>
+      <%= f.text_field :content %>
+    </p>
+    <p class="new todo">
+      <%= f.label :User %>
+      <%= f.select :user_id, options_for_select([['Choose One', ''], ['Hunter', 0], ['Andy', 1], ['Michael', 2]], selected = @todos.user_id)%>
+      </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <%= end %>
+</div>
+<ul id="tasks">
+  <%= @todos.each do |task| %>
+    <li id="todos#{todos.id}"></li>
+      <%= check_box_tag(:completed, "completed")%>
+      <%= @todos.content %>
+      <%= task.user_id %>
+</ul>

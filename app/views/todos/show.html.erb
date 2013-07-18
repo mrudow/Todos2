@@ -1,0 +1,30 @@
+<h1>Todo List</h1>
+
+<div id="task-creation-form">
+  <%= form_for @todo, :url => { :action => "create" }, :remote => true do |f| %>
+    <% if @todos.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@todos.errors.count, "error") %> prohibited this project from being saved:</h2>
+        <ul>
+        <% @todos.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h2>New Item</h2>
+    <p class="new todo">
+      <%= f.text_field :content %>
+      <%= f.select :user_id, options_for_select([['Choose One', ''], ['Hunter', 0], ['Andy', 1], ['Michael', 2]], selected = @todos.user_id)%>
+      <%= f.submit %>
+    </p>
+  <%= end %>
+</div>
+<ul id="tasks">
+  <%= @todos.each do |task| %>
+    <li id="todos#{todos.id}"></li>
+      <%= check_box_tag(:completed, "completed")%>
+      <%= @todos.content %>
+      <%= task.user_id %>
+</ul>
