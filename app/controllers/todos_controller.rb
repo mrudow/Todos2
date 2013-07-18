@@ -1,10 +1,10 @@
 class TodosController < ApplicationController
   def index
-    @todos= Todo.all
-    @todos=Todo.new(todos_params)
-    @todos.save
-
-    @todos = Todo.find(params[:id])
+    @todos= Todo.all(:order =>"position")
+    @todo=Todo.new
+    @todo.save
+    
+    #@todos = Todo.find(params[:id])
   end 
 
   def new
@@ -16,11 +16,16 @@ class TodosController < ApplicationController
   end
 
   def create
-    
-  end
+    @task = Task.new(params[:task])
+    @task.position = 1
 
-  private
-    def todos_params
-      params.require(:content, :user_id)
-    end
+  end
+  
+  
+  # this was under index and was connected with def todos params@todos=Todo.new(todos_params)
+
+  #private
+   # def todos_params
+    #  params.require(:content, :user_id)
+    #end
 end
