@@ -1,6 +1,7 @@
 Todos2::Application.routes.draw do
-  get "welcome/index"
-  resources :todos 
+  #get "welcome/index"
+  root :to => "todos#index"
+  resources :todos, :collection => { :sort => :post }
   #get /todos/:id(.:format), to: 'todos#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
