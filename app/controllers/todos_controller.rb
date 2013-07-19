@@ -23,6 +23,8 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(params[:todo])
     @todo.position = 1
+    @todo.save
+    redirect_to @todo
     
   end
 
