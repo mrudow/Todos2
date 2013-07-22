@@ -23,10 +23,17 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(params[:todo])
     @todo.position = 1
-    @todo.save
+    if @todo.save
+      Todo.all.each do |todo|
+        if todo.id != @todo.id
+          todo.position +=1
+          todo.save
+        end
+      end
+    end
     redirect_to @todo
-    
   end
+
 
   def update
     @todo = Todo.find(params[:id])
@@ -44,6 +51,14 @@ class TodosController < ApplicationController
       format.json {head :no_content}
     end
   end 
+
+  #def sort
+   # params[:todos].each_with_index do |id, index|
+    #  Todo.update_all(['position=?', index+1], ['id=?', id])
+    #end
+    #render :nothing => true
+  #end
+
 end  
   # this was under index and was connected with def todos params@todos=Todo.new(todos_params)
 
