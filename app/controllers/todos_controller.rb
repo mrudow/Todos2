@@ -10,7 +10,7 @@ class TodosController < ApplicationController
     
     #@todos = Todo.find(params[:id])
   end 
-
+  
   def new
     @todo = Todo.new
   end
