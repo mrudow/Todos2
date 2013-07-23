@@ -15,13 +15,15 @@
   <% @todos.each do |todo| %>
     <li id="todo_<%=todo.id%>">
       <%#= todo.id %>
-      <%= check_box_tag(:completed, "completed")%>
-      <%= todo.content %>
+      <%= best_in_place todo, :content %>
+      <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
+      <%#= check_box_tag(:completed, "completed")%>
+      <%#= todo.content %>
       <%= select_tag todo.user_id, options_for_select([['Choose One', ''], ['Hunter', 0], ['Andy', 1], ['Michael', 2]], selected= todo.user_id), :onchange => "this.form.submit();" %>
       <div id="edit_form">
-        <%= form_for todo do |f| %>
-          <%= f.text_field :content %>
-        <% end %>
+        <%#= form_for todo do |f| %>
+          <%#= f.text_field :content %>
+        <%# end %>
       </div>  
       <button>Edit Content</button>
       <%= todo.position %>
