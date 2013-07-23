@@ -12,10 +12,9 @@
   <% end %>
 </div>
 <ul id="todos">
-  <%= Todo.dropdown_order %>
   <% @todos.each do |todo| %>
     <li id="todo_<%=todo.id%>">
-      <%= todo.id %>
+      <%#= todo.id %>
       <%= check_box_tag(:completed, "completed")%>
       <%= todo.content %>
       <%= select_tag todo.user_id, options_for_select([['Choose One', ''], ['Hunter', 0], ['Andy', 1], ['Michael', 2]], selected= todo.user_id), :onchange => "this.form.submit();" %>
@@ -25,6 +24,10 @@
         <% end %>
       </div>  
       <button>Edit Content</button>
+      <%= todo.position %>
+      <%= form_for(@todo) do |f| %>
+        <%= f.select :position, options_for_select(Todo.dropdown_order, :selected => todo.position ) %>
+      <% end %>
       <%= link_to 'Destroy', todo, :method => :delete %>
       <%#= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%#= todo.user_id %>

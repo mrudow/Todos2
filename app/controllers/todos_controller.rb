@@ -53,6 +53,14 @@ class TodosController < ApplicationController
       format.json {head :no_content}
     end
     Todo.dropdown_order.delete(Todo.dropdown_order.length)
+    if @todo.save
+      Todo.all.each do |todo|
+        if todo.position >= @todo.position
+          todo.position -=1
+          todo.save
+        end
+      end
+    end
   end 
 
   #def sort
