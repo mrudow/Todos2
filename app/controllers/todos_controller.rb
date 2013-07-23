@@ -30,6 +30,8 @@ class TodosController < ApplicationController
           todo.save
         end
       end
+      Todo.dropdown_order << (1 + Todo.dropdown_order.length)
+
     end
     redirect_to @todo
   end
@@ -50,6 +52,7 @@ class TodosController < ApplicationController
       format.html {redirect_to todos_url}
       format.json {head :no_content}
     end
+    Todo.dropdown_order.delete(Todo.dropdown_order.length)
   end 
 
   #def sort

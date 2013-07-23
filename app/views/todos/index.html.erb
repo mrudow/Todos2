@@ -12,7 +12,7 @@
   <% end %>
 </div>
 <ul id="todos">
-  <%= make_order %>
+  <%= Todo.dropdown_order %>
   <% @todos.each do |todo| %>
     <li id="todo_<%=todo.id%>">
       <%= todo.id %>
