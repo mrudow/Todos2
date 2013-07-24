@@ -41,16 +41,16 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.json { respond_with_bip(@user) }
+      if @todo.update_attributes(params[:todo])
+        format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
+        format.json { respond_with_bip(@todo) }
       else
         format.html { render :action => "edit" }
-        format.json { respond_with_bip(@user) }
+        format.json { respond_with_bip(@todo) }
       end
     end
   end
-
+  
   
   #DELETE /todos/1
   #DELETE /todos/1.json

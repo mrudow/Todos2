@@ -1004,13 +1004,13 @@ p
 11
 x
 5
-@user
+@todo
 x
 6
 params
 x
 4
-user
+todo
 x
 2
 []
@@ -1072,7 +1072,7 @@ p
 7
 x
 5
-@user
+@todo
 x
 4
 Hash
@@ -1087,7 +1087,7 @@ E
 8
 US-ASCII
 30
-User was successfully updated.
+Todo was successfully updated.
 x
 3
 []=
@@ -1148,7 +1148,7 @@ p
 2
 x
 5
-@user
+@todo
 x
 16
 respond_with_bip
@@ -1291,7 +1291,7 @@ p
 2
 x
 5
-@user
+@todo
 x
 16
 respond_with_bip
