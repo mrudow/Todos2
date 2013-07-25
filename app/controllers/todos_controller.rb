@@ -31,7 +31,6 @@ class TodosController < ApplicationController
         end
       end
       Todo.dropdown_order << (1 + Todo.dropdown_order.length)
-
     end
     redirect_to @todo
   end

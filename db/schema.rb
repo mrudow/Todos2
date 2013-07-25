@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718132513) do
+ActiveRecord::Schema.define(:version => 20130725143006) do
 
   create_table "todos", :force => true do |t|
     t.string   "content"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(:version => 20130718132513) do
     t.integer  "user_id"
     t.string   "completed"
     t.string   "boolean"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

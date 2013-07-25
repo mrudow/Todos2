@@ -7,4 +7,5 @@ class Todo < ActiveRecord::Base
   def self.dropdown_order
     @@dropdown_order
   end
+  belongs_to :users
 end
