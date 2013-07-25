@@ -18,7 +18,7 @@
       <%= best_in_place todo, :content %>
       <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
       <%= best_in_place todo, :user_id, :type => :select, :collection=> [['', 'Choose One'], [0, 'Hunter'], [1, 'Andy'], [2, 'Michael']]%>
-      <%= todo.position %>
+      <%#= todo.position %>
       <%#= best_in_place todo, :position, :type => :select, :collection => Todo.dropdown_order %>
       <%= form_for(@todo) do |f| %>
         <%= f.select :position, options_for_select(Todo.dropdown_order, :selected => todo.position ) %>
@@ -29,3 +29,4 @@
     </li>
   <% end %>
 </ul>
+<%= link_to "User's Tasks", users_path %>
