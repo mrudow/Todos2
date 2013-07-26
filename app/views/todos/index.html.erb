@@ -2,7 +2,6 @@
 
 <div id="task-creation-form">
   <%= form_for @todo, :url => { :action => "create" }, :remote => true do |f| %>
-    
     <h2>New Item</h2>
     <p class="new todo">
       <%= f.text_field :content %>

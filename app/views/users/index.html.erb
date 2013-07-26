@@ -1,16 +1,14 @@
 <% @users.each do |user| %>
   <h1><%= user.username %>'s Tasks</h1><br></br>
-  <%= user.todos.each do |todo| %>
-    <li id="user_todo_<%=todo.id%>">
-      <%= best_in_place todo, :content %>
-      <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
-      <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
-      <%= link_to 'Destroy', todo, :method => :delete %>
-    </li> 
-  <% end %>
+  <ul id="list_of_tasks">
+    <% user.todos.each do |todo| %>
+      <li id="user_todo_<%=todo.id%>">
+        <%= best_in_place todo, :content %>
+        <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
+        <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
+        <%= link_to 'Destroy', todo, :method => :delete %>
+      </li> 
+    <% end %>
+  </ul>
 <% end %>
-<div id="user-task-creation-form">
-</div>
-<ul id="list_of_tasks">
-</ul> 
 <%= link_to "Todo List", todos_path %>
