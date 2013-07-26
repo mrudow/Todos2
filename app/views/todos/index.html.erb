@@ -17,12 +17,9 @@
   <% @todos.each do |todo| %>
     <li id="todo_<%=todo.id%>">
       <%= best_in_place todo, :content %>
-      <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
+      <%= best_in_place todo, :completed, :type => :checkbox, :collection => ['Completed', 'Not-Completed'] %>
       <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
-      <%= best_in_place todo, :position, :type => :select, :collection => Todo.dropdown_order %>
-      <%= form_for(@todo) do |f| %>
-        <%= f.select :position, options_for_select(Todo.dropdown_order, :selected => todo.position ) %>
-      <% end %>
+      <%= best_in_place todo, :position %>
       <button id="button">Notes</button>
       <div class="notes">
         <%= best_in_place todo, :notes %>

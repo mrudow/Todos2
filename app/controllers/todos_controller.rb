@@ -15,12 +15,10 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
-
   def show
-
-  end
-
-  def create
+  end 
+ 
+  def create 
     @todo = Todo.new(params[:todo])
     @todo.position = 1
     if @todo.save
@@ -34,6 +32,58 @@ class TodosController < ApplicationController
     end
     redirect_to @todo
   end
+
+
+
+  I need to make my switch position command for changing position by clicking and editing. here are some ideas
+if the hole is above the current position, then it is < @todo.position. If the hole is below the current position, the hole is > @todo.postion
+
+  def switch_position
+    a=[]
+    Todo.all.each do |todo|
+      a << todo.position
+    end
+    b=0
+    for i in 0..Todo.dropdown_order.length
+      if a.include?(Todo.dropdown_order(i))
+        1==1
+      else
+        b=Todo.dropdown_order(i)
+      end
+    end
+    if @todo.position > i
+      Todo.all.each do |todo|
+        if (todo.position >= @todo.position) && (todo.id != @todo.id)
+          todo.position -=1
+        end
+      end
+    else
+      Todo.all.each do |todo|
+        if (todo.position >= @todo.position) && (todo.id != @todo.id)
+          todo.position -=1
+        end
+    end
+    end
+
+  def switch_position_up
+    Todo.all.each do |todo|
+      if (todo.position <= @todo.position) && (todo.id != @todo.id)
+        todo.position +=1
+      end
+    end
+  end
+
+  def switch_position_down
+    Todo.all.each do |todo|
+      if (todo.position >= @todo.position) && (todo.id != @todo.id)
+        todo.position -=1
+      end
+    end
+  end
+
+
+
+
 
 
   def update
