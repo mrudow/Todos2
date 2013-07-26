@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
 
   def index
-    @users= Users.all #.where(@todo.user_id == @user.username)
+    @users= User.all #.where(@todo.user_id == @user.username)
   end
   
   def new
-    @user = Users.new
+    @user = User.new
   end
 
   def create
-    @user = Users.new(params[:user])
+    @user = User.new(params[:user])
   end
   
   def show
-    @users= Todo.all.where(@todo.user_id == @user.username)
+    @users= Todo.all #.where(@todo.user_id == @user.username)
   end
   
   def update

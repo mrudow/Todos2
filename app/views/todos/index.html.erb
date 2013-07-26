@@ -6,7 +6,7 @@
     <h2>New Item</h2>
     <p class="new todo">
       <%= f.text_field :content %>
-      <%= f.select(:user_id, options_for_select([['Choose One', ''], ['Hunter', 0], ['Andy', 1], ['Michael', 2]], selected = @todo.user_id))%>
+      <%= f.select(:user_id, options_for_select([['Choose One', ''], ['Hunter', 1], ['Andy', 2], ['Michael', 3]], selected = @todo.user_id))%>
       <%= f.submit %>
     </p>
   <% end %>
@@ -17,7 +17,7 @@
       <%#= todo.id %>
       <%= best_in_place todo, :content %>
       <%= best_in_place todo, :completed, :type => :checkbox, :collection => ["Completed", "Not-Completed"] %>
-      <%= best_in_place todo, :user_id, :type => :select, :collection=> [['', 'Choose One'], [0, 'Hunter'], [1, 'Andy'], [2, 'Michael']]%>
+      <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
       <%#= todo.position %>
       <%#= best_in_place todo, :position, :type => :select, :collection => Todo.dropdown_order %>
       <%= form_for(@todo) do |f| %>
