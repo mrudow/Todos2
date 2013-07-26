@@ -23,7 +23,7 @@
       <%= form_for(@todo) do |f| %>
         <%= f.select :position, options_for_select(Todo.dropdown_order, :selected => todo.position ) %>
       <% end %>
-      <button id="button<%=todo.id%>">Notes</button>
+      <button id="button">Notes</button>
       <div class="notes">
         <%= best_in_place todo, :notes %>
       </div>
