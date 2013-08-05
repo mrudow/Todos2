@@ -33,62 +33,10 @@ class TodosController < ApplicationController
     redirect_to @todo
   end
 
-
-
-  I need to make my switch position command for changing position by clicking and editing. here are some ideas
-if the hole is above the current position, then it is < @todo.position. If the hole is below the current position, the hole is > @todo.postion
-
-  def switch_position
-    a=[]
-    Todo.all.each do |todo|
-      a << todo.position
-    end
-    b=0
-    for i in 0..Todo.dropdown_order.length
-      if a.include?(Todo.dropdown_order(i))
-        1==1
-      else
-        b=Todo.dropdown_order(i)
-      end
-    end
-    if @todo.position > i
-      Todo.all.each do |todo|
-        if (i < todo.position <= @todo.position) && (todo.id != @todo.id)
-          todo.position -=1
-        end
-      end
-    else
-      Todo.all.each do |todo|
-        if (i > todo.position >= @todo.position) && (todo.id != @todo.id)
-          todo.position +=1
-        end
-    end
-    end
-
-  def switch_position_up
-    Todo.all.each do |todo|
-      if (todo.position <= @todo.position) && (todo.id != @todo.id)
-        todo.position +=1
-      end
-    end
-  end
-
-  def switch_position_down
-    Todo.all.each do |todo|
-      if (todo.position >= @todo.position) && (todo.id != @todo.id)
-        todo.position -=1
-      end
-    end
-  end
-
-
-
-
-
-
+  
   def update
     @todo = Todo.find(params[:id])
-    
+    @todo.switch_position
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
         format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
@@ -114,7 +62,7 @@ if the hole is above the current position, then it is < @todo.position. If the h
     Todo.dropdown_order.delete(Todo.dropdown_order.length)
     if @todo.save
       Todo.all.each do |todo|
-        if todo.position >= @todo.position
+        if todo.position > @todo.position
           todo.position -=1
           todo.save
         end
