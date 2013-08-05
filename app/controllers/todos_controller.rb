@@ -53,14 +53,14 @@ if the hole is above the current position, then it is < @todo.position. If the h
     end
     if @todo.position > i
       Todo.all.each do |todo|
-        if (todo.position >= @todo.position) && (todo.id != @todo.id)
+        if (i < todo.position <= @todo.position) && (todo.id != @todo.id)
           todo.position -=1
         end
       end
     else
       Todo.all.each do |todo|
-        if (todo.position >= @todo.position) && (todo.id != @todo.id)
-          todo.position -=1
+        if (i > todo.position >= @todo.position) && (todo.id != @todo.id)
+          todo.position +=1
         end
     end
     end
