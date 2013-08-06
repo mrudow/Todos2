@@ -17,7 +17,11 @@
   <% @todos.each do |todo| %>
     <li id="todo_<%=todo.id%>">
       <%= best_in_place todo, :content %>
-      <%= best_in_place todo, :completed, :type => :checkbox, :collection => ['Completed', 'Not-Completed'] %>
+      <%#= check_box_tag(:completed) %>
+      <#input id="completed" name="copmleted" type="checkbox" value="1" />
+      <%#= check_box_tag 'Copmleted', '1', todo.completed %>
+      <%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%>
+      <%#= best_in_place todo, :completed, :type => :checkbox, :collection => ['Completed', 'Not-Completed'] %>
       <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
       <%= best_in_place todo, :position %> 
       <button id="button">Notes</button>

@@ -10,17 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726151749) do
+ActiveRecord::Schema.define(:version => 20130806153144) do
 
   create_table "todos", :force => true do |t|
     t.string   "content"
     t.integer  "position"
     t.integer  "user_id"
-    t.string   "completed"
     t.string   "boolean"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "notes"
+    t.boolean  "completed"
   end
 
   create_table "users", :force => true do |t|

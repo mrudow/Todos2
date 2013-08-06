@@ -4,6 +4,6 @@ $(document).ready(function(){
   $('button').on('click', function(){
     $(this).next('.notes').slideToggle();
     //$('.notes').slideToggle();
-  });
- });
+  }); 
+});
 
