@@ -36,7 +36,7 @@ class TodosController < ApplicationController
   
   def update
     @todo = Todo.find(params[:id])
-    @todo.switch_position
+    old_pos=@todo.position
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
         format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
@@ -46,9 +46,18 @@ class TodosController < ApplicationController
         format.json { respond_with_bip(@todo) }
       end
     end
+    switch_position(@todo, old_pos)
+    @todo.save
   end
   
-  
+  #if old_pos > Todo.dropdown_order.length
+    #  switch_position(@todo, Todo.dropdown_order.length)
+    #elsif old_pos < 1
+    # @todo.switch_position(@todo, 1)
+    #else
+    #  @todo.switch_position(@todo, old_pos)
+    #end
+
   #DELETE /todos/1
   #DELETE /todos/1.json
   def destroy
