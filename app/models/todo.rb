@@ -3,11 +3,6 @@ class Todo < ActiveRecord::Base
   USER_ID={1=>"Hunter", 2=>"Andy", 3=>"Michael"}
   validates :content, :presence => true
   validates :user_id, :numericality=> { :message=> "must be selected from the drop-down list"}
-  @@dropdown_order=[]
-  def self.dropdown_order
-    @@dropdown_order
-  end
-  
   belongs_to :user
 end
 
@@ -29,4 +24,14 @@ def switch_position(instance, old_pos)
       end
     end
   end
+end
+
+def last_position
+  last_position=0
+  Todo.all.each do |todo|
+    if 1==1
+      last_position +=1
+    end
+  end
+  return last_position
 end

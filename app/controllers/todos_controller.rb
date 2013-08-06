@@ -28,7 +28,6 @@ class TodosController < ApplicationController
           todo.save
         end
       end
-      Todo.dropdown_order << (1 + Todo.dropdown_order.length)
     end
     redirect_to @todo
   end
@@ -46,18 +45,21 @@ class TodosController < ApplicationController
         format.json { respond_with_bip(@todo) }
       end
     end
-    switch_position(@todo, old_pos)
+    if @todo.position < 1
+      switch_position(@todo, old_pos)
+      @todo.position=1
+      @todo.save
+    elsif @todo.position > last_position
+      switch_position(@todo, old_pos)
+      @todo.position=last_position
+      @todo.save
+    else
+      switch_position(@todo, old_pos)
+    end
     @todo.save
   end
   
-  #if old_pos > Todo.dropdown_order.length
-    #  switch_position(@todo, Todo.dropdown_order.length)
-    #elsif old_pos < 1
-    # @todo.switch_position(@todo, 1)
-    #else
-    #  @todo.switch_position(@todo, old_pos)
-    #end
-
+    
   #DELETE /todos/1
   #DELETE /todos/1.json
   def destroy
@@ -68,7 +70,6 @@ class TodosController < ApplicationController
       format.html {redirect_to todos_url}
       format.json {head :no_content}
     end
-    Todo.dropdown_order.delete(Todo.dropdown_order.length)
     if @todo.save
       Todo.all.each do |todo|
         if todo.position > @todo.position
