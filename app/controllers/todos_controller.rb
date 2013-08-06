@@ -56,7 +56,6 @@ class TodosController < ApplicationController
     else
       switch_position(@todo, old_pos)
     end
-    @todo.save
   end
   
     
