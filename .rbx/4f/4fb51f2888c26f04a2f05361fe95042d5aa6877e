@@ -1660,10 +1660,9 @@ x
 7
 destroy
 i
-9
+8
 5
-5
-49
+7
 0
 48
 50
@@ -1685,8 +1684,8 @@ I
 p
 2
 x
-9
-todos_url
+4
+back
 x
 11
 redirect_to
@@ -1697,7 +1696,7 @@ I
 I
 45
 I
-9
+8
 x
 60
 /home/michael/www/todos2/app/controllers/todos_controller.rb
