@@ -6,7 +6,7 @@
     <% user.todos.each do |todo| %>
       <li id="user_todo_<%=todo.id%>">
         <%= best_in_place todo, :content %>
-        <%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%>
+        <div class="checkbox"><%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%></div>
         <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
         <div class="pos"><%= best_in_place todo, :position %></div>
         <button id="button">Notes</button>

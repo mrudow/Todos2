@@ -11,8 +11,8 @@ $(document).ready(function(){
   $('.pos').focusout(function(){
     location.reload();
   });
-  $('.checkbs').click(function(){
-    $('.checkbs').mouseleave(function(){
+  $('.checkbox').click(function(){
+    $('.checkbox').mouseleave(function(){
       location.reload();
     });
   });
