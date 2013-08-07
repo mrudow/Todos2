@@ -1,5 +1,5 @@
 <h1>Todo List</h1>
-
+<%= link_to "Users' Tasks", users_path %>
 <div id="task-creation-form">
   <%= form_for @todo, :url => { :action => "create" }, :remote => true do |f| %>
     <h2>New Item</h2>
@@ -19,7 +19,7 @@
       <%= best_in_place todo, :content %>
       <%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%>
       <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
-      <%= best_in_place todo, :position %> 
+      <div class="pos"><%= best_in_place todo, :position %></div>
       <button id="button">Notes</button>
       <div class="notes">
         <%= best_in_place todo, :notes %>
@@ -28,4 +28,4 @@
     </li>
   <% end %>
 </ul>
-<%= link_to "User's Tasks", users_path %>
+

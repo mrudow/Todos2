@@ -8,6 +8,9 @@ $(document).ready(function(){
   $('#submit_button').on('click', function(){
     window.location.replace("http://localhost:3000/todos");
   });
+  $('.pos').focusout(function(){
+    location.reload();
+  });
 });
 
 

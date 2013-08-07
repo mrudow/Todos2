@@ -1,5 +1,7 @@
+<h1>Users' Tasks</h1>
+<%= link_to "Todo List", todos_path %>
 <% @users.each do |user| %>
-  <h1><%= user.username %>'s Tasks</h1><br></br>
+  <h2><%= user.username %>'s Tasks</h2><br></br>
   <ul id="list_of_tasks">
     <% user.todos.each do |todo| %>
       <li id="user_todo_<%=todo.id%>">
@@ -16,4 +18,3 @@
     <% end %>
   </ul>
 <% end %>
-<%= link_to "Todo List", todos_path %>
