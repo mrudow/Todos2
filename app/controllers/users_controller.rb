@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def update
     @user= User.find(params[:id])
     old_pos=@todo.position
+    old_checkbox=@todo.completed
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
@@ -36,8 +37,15 @@ class UsersController < ApplicationController
       switch_position(@todo, old_pos)
       @todo.position=last_position
       @todo.save
+    elsif @todo.position == old_pos
+      1==1
     else
       switch_position(@todo, old_pos)
+    end
+    if @todo.completed==old_checkbox
+      1==1
+    else
+      change_for_checkbox(@todo)
     end
   end
   

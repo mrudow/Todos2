@@ -11,9 +11,11 @@ $(document).ready(function(){
   $('.pos').focusout(function(){
     location.reload();
   });
-  //$('.checkbs').on("click", function(){
-    //location.reload();
-  //});
+  $('.checkbs').click(function(){
+    $('.checkbs').mouseleave(function(){
+      location.reload();
+    });
+  });
 });
 
 
