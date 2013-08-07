@@ -6,7 +6,7 @@ $(document).ready(function(){
     //$('.notes').slideToggle();
   }); 
   $('#submit_button').on('click', function(){
-    location.reload();
+    window.location.replace("http://localhost:3000/todos");
   });
 });
 
