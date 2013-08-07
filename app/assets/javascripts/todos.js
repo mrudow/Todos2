@@ -5,6 +5,9 @@ $(document).ready(function(){
     $(this).next('.notes').slideToggle();
     //$('.notes').slideToggle();
   }); 
+  $('#submit_button').on('click', function(){
+    location.reload();
+  });
 });
 
 

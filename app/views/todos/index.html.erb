@@ -3,13 +3,13 @@
 <div id="task-creation-form">
   <%= form_for @todo, :url => { :action => "create" }, :remote => true do |f| %>
     <h2>New Item</h2>
-    <p class="new todo">
+    <p class="new_todo">
       <%= f.label "Content" %>
-      <%= f.text_field :content %>
+      <div id="new_content"><%= f.text_field :content %></div>
       <%= f.label "Notes" %>
       <%= f.text_field :notes %>
       <%= f.select(:user_id, options_for_select([['Choose One', ''], ['Hunter', 1], ['Andy', 2], ['Michael', 3]], selected = @todo.user_id))%>
-      <%= f.submit %>
+      <div id="submit_button"><%= f.submit %></div>
     </p>
   <% end %>
 </div>
