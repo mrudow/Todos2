@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   
   def update
     @user= User.find(params[:id])
-    @todo = Todo.find(params[:id])
     old_pos=@todo.position
     respond_to do |format|
       if @user.update_attributes(params[:user])

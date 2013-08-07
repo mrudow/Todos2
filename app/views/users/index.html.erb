@@ -8,11 +8,9 @@
         <%= best_in_place todo, :content %>
         <%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%>
         <%= best_in_place todo, :user_id, :type => :select, :collection=> [[1, 'Hunter'], [2, 'Andy'], [3, 'Michael']]%>
-        <%= best_in_place todo, :position %>
-      <button id="button">Notes</button>
-      <div class="notes">
-        <%= best_in_place todo, :notes %>
-      </div>
+        <div class="pos"><%= best_in_place todo, :position %></div>
+        <button id="button">Notes</button>
+        <div class="notes"><%= best_in_place todo, :notes %></div>
         <%= link_to 'Destroy', todo, :method => :delete %>
       </li> 
     <% end %>

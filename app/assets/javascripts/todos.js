@@ -11,6 +11,9 @@ $(document).ready(function(){
   $('.pos').focusout(function(){
     location.reload();
   });
+  //$('.checkbs').on("click", function(){
+    //location.reload();
+  //});
 });
 
 

@@ -36,6 +36,7 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     old_pos=@todo.position
+    old_checkbox=@todo.completed
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
         format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
@@ -53,8 +54,15 @@ class TodosController < ApplicationController
       switch_position(@todo, old_pos)
       @todo.position=last_position
       @todo.save
+    elsif @todo.position == old_pos
+      1==1
     else
       switch_position(@todo, old_pos)
+    end
+    if @todo.completed==old_checkbox
+      1==1
+    else
+      change_for_checkbox(@todo)
     end
   end
   

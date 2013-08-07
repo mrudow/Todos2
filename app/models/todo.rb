@@ -35,3 +35,16 @@ def last_position
   end
   return last_position
 end
+
+def change_for_checkbox(instance)
+  pos=1
+  Todo.all.each do |todo|
+    if (todo.completed!=true) && (todo.id !=instance.id)
+      pos +=1
+    end
+  end
+  old_position=instance.position
+  instance.position=pos
+  instance.save
+  switch_position(instance, old_position)
+end 
