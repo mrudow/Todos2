@@ -3,7 +3,7 @@
 <% @users.each do |user| %>
   <h2><%= user.username %>'s Tasks</h2><br></br>
   <ul id="list_of_tasks">
-    <% user.todos.each do |todo| %>
+    <% user.todos.order("position asc").each do |todo| %>
       <li id="user_todo_<%=todo.id%>">
         <%= best_in_place todo, :content %>
         <div class="checkbox"><%= best_in_place todo, :completed, :type => :checkbox, :collection => [raw("&#x2610;"), raw("&#x2611;")]%></div>

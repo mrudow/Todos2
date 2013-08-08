@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users= User.all #.where(@todo.user_id == @user.username)
+    @users= User.all 
   end
   
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @users= Todo.all #.where(@todo.user_id == @user.username)
+    @users= Todo.all 
   end
   
   def update
