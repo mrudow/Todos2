@@ -67,5 +67,4 @@ def change_for_checkbox(instance)
   old_position=instance.position
   instance.position=pos
   instance.save
-  switch_position(instance, old_position)
 end 
