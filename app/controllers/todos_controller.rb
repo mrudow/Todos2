@@ -46,6 +46,11 @@ class TodosController < ApplicationController
         format.json { respond_with_bip(@todo) }
       end
     end
+    if @todo.completed==old_checkbox
+      1==1
+    else
+      change_for_checkbox(@todo)
+    end
     if @todo.position < 1
       switch_position(@todo, old_pos)
       @todo.position=1
@@ -54,15 +59,8 @@ class TodosController < ApplicationController
       switch_position(@todo, old_pos)
       @todo.position=last_position
       @todo.save
-    elsif @todo.position == old_pos
-      1==1
     else
       switch_position(@todo, old_pos)
-    end
-    if @todo.completed==old_checkbox
-      1==1
-    else
-      change_for_checkbox(@todo)
     end
   end
   

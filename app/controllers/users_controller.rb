@@ -29,6 +29,11 @@ class UsersController < ApplicationController
         format.json { respond_with_bip(@user) }
       end
     end 
+    if @todo.completed==old_checkbox
+      1==1
+    else
+      change_for_checkbox(@todo)
+    end
     if @todo.position < 1
       switch_position(@todo, old_pos)
       @todo.position=1
@@ -37,15 +42,8 @@ class UsersController < ApplicationController
       switch_position(@todo, old_pos)
       @todo.position=last_position
       @todo.save
-    elsif @todo.position == old_pos
-      1==1
     else
       switch_position(@todo, old_pos)
-    end
-    if @todo.completed==old_checkbox
-      1==1
-    else
-      change_for_checkbox(@todo)
     end
   end
   

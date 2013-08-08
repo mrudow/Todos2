@@ -24,6 +24,27 @@ def switch_position(instance, old_pos)
       end
     end
   end
+  if instance.completed == true
+    Todo.all.each do |todo|
+      if todo.position==instance.position+1
+        if todo.completed!=true
+          instance.completed=false
+          instance.save
+        end
+        break
+      end
+    end
+  elsif instance.completed != true
+    Todo.all.each do |todo|
+      if todo.position==instance.position-1
+        if todo.completed==true
+          instance.completed=true
+          instance.save
+        end 
+        break
+      end
+    end
+  end
 end
 
 def last_position
