@@ -31,17 +31,16 @@ class TodosController < ApplicationController
       end
       redirect_to todos_path
     else
-      if @todo.user_id==(1|2|3)
-        flash.now[:notice]= "Content can't be blank"
-      elsif @todo.content.length > 0
+      if @todo.content.length > 0
         flash.now[:notice]= "User must be selected from the drop-down list"
+
+      elsif (@todo.user_id==1) | (@todo.user_id==2) | (@todo.user_id==3)
+        flash.now[:notice]= "Content can't be blank"
       else
         flash.now[:notice]= "Content can't be blank and User must be selected from the drop-down list"
       end
-      #flash.now[:notice]="error"
       render :action => "index"
     end
-    #redirect_to @todo
   end
 
   
