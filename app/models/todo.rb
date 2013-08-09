@@ -6,6 +6,22 @@ class Todo < ActiveRecord::Base
   belongs_to :user
 end
 
+def error_mess(instance)
+  Todo.all.each do |todo|
+    todo.content="this part works"
+    todo.save
+  end
+  if instance.invalid?
+    if instance.user_id==(1|2|3)
+      flash[:error]= "Content can't be blank"
+    elsif instance.content.length > 0
+      flash[:error]= "User must be selected from the drop-down list"
+    else
+      flash[:error]= "Content can't be blank and User must be selected from the drop-down list"
+    end
+  end
+end
+
 def switch_position(instance, old_pos)
   if instance.position == old_pos
     1==1  

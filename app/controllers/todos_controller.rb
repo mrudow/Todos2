@@ -2,11 +2,11 @@ class TodosController < ApplicationController
   def index
     @todos= Todo.all(:order =>"position")
     @todo=Todo.new(params[:todo])
-    if @todo.save
-      true
-    else
-      print "Error Occured"
-    end
+    #if @todo.save
+      #true
+    #else
+      #print "Error Occured"
+    #end
     
     #@todos = Todo.find(params[:id])
   end 
@@ -17,8 +17,9 @@ class TodosController < ApplicationController
 
   def show
   end 
- 
+  
   def create 
+    @todos= Todo.all(:order =>"position")
     @todo = Todo.new(params[:todo])
     @todo.position = 1
     if @todo.save
@@ -28,8 +29,19 @@ class TodosController < ApplicationController
           todo.save
         end
       end
+      redirect_to todos_path
+    else
+      if @todo.user_id==(1|2|3)
+        flash.now[:notice]= "Content can't be blank"
+      elsif @todo.content.length > 0
+        flash.now[:notice]= "User must be selected from the drop-down list"
+      else
+        flash.now[:notice]= "Content can't be blank and User must be selected from the drop-down list"
+      end
+      #flash.now[:notice]="error"
+      render :action => "index"
     end
-    redirect_to @todo
+    #redirect_to @todo
   end
 
   

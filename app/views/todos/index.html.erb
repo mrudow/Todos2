@@ -1,14 +1,17 @@
 <h1>Todo List</h1>
 <%= link_to "Users' Tasks", users_path %>
 <div id="task-creation-form">
-  <%= form_for @todo, :url => { :action => "create" }, :remote => true do |f| %>
+  <%= form_for @todo  do |f| %>
     <h2>New Item</h2>
+    <% unless flash[:notice].nil? %>
+      <div id="flash-notice"><%= flash[:notice] %></div>
+    <% end %>
     <p class="new_todo">
       <%= f.label "Content" %>
       <div id="new_content"><%= f.text_field :content %></div>
       <%= f.label "Notes" %>
       <%= f.text_field :notes %>
-      <%= f.select(:user_id, options_for_select([['Choose One', ''], ['Hunter', 1], ['Andy', 2], ['Michael', 3]], selected = @todo.user_id))%>
+      <div id="user"><%= f.select(:user_id, options_for_select([['Choose One', ''], ['Hunter', 1], ['Andy', 2], ['Michael', 3]], selected = @todo.user_id))%></div>
       <div id="submit_button"><%= f.submit %></div>
     </p>
   <% end %>
